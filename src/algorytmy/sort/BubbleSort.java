@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class BubbleSort {
     public static void main(String[] args) {
         BubbleSort bubbleSort = new BubbleSort();
-        int[] array = {1, 2, 3, 4, 6, 7, 8, 10};
+        int[] array = {1, -2, 3, 4, -6, 7, 8, 10};
         int[] sortedArray = bubbleSort.ascSort(array);
         System.out.println(Arrays.toString(sortedArray));
         System.out.println(Arrays.toString(bubbleSort.descSort(array)));
@@ -23,7 +23,7 @@ public class BubbleSort {
             for (int j = 0; j < array.length - 1 - i; j++) {
                 if (array[j] > array[j + 1]) {
                     counter++;
-                    swap(array, j, j + 1);
+                    SortUtils.swap(array, j, j + 1);
                     flag = false;
                 }
             }
@@ -37,12 +37,6 @@ public class BubbleSort {
     }
 
 
-    private void swap(int[] array, int index1, int index2) {
-        int tmp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = tmp;
-    }
-
     public int[] descSort(int[] array) {
         boolean flag = true;
         int counter = 0;
@@ -51,7 +45,7 @@ public class BubbleSort {
             for (int j = 0; j < array.length - 1 - i; j++) {
                 if (array[j] < array[j + 1]) {
                     counter++;
-                    swap(array, j, j + 1);
+                    SortUtils.swap(array, j, j + 1);
                     flag = false;
                 }
             }
