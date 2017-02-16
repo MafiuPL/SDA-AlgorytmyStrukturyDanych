@@ -3,7 +3,7 @@ package algorytmy.structures;
 /**
  * Created by RENT on 2017-02-15.
  */
-public class MyList {
+public class MyList implements MyListInterface {
     private final int INITIAL_SIZE = 10;
     private int[] array;
     private int size;
@@ -53,7 +53,7 @@ public class MyList {
         return tmpArray;
     }
 
-    public MyList clone() {
+    public MyListInterface clone() {
         MyList myList = new MyList();
         myList.array = rewrite(new int[this.array.length]);
         myList.size = this.size;
@@ -70,7 +70,7 @@ public class MyList {
         }
     }
 
-    public void swap(int i1, int i2) {
+    private void swap(int i1, int i2) {
         int tmp = this.array[i1];
         this.array[i1] = this.array[i2];
         this.array[i2] = tmp;
@@ -113,5 +113,17 @@ public class MyList {
 
         }
 
+    }
+
+    public void addAll(MyListInterface myList) {
+        for (int i = 0; i < myList.getSize(); i++) {
+            this.add(myList.get(i));
+        }
+    }
+
+    public void addAll(int index, MyListInterface myList) {
+        for (int i = 0; i < myList.getSize(); i++) {
+            add(index + i, myList.getSize());
+        }
     }
 }
